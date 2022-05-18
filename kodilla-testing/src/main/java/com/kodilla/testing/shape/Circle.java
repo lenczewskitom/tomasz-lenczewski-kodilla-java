@@ -10,6 +10,14 @@ public class Circle implements Shape{
     }
 
     @Override
+    public String toString() {
+        return "Circle{" +
+                "radius=" + radius +
+                ", shapeName='" + shapeName + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

@@ -44,6 +44,7 @@ public class ShapeCollectorTestSuite {
             //Given
             ShapeCollector shapeCollector = new ShapeCollector();
             Square square = new Square(4.0);
+            shapeCollector.addFigure(square);
             //When
             boolean result = shapeCollector.removeFigure(square);
             //Then

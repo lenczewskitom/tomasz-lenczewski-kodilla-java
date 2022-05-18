@@ -21,6 +21,14 @@ public class Square implements Shape{
     }
 
     @Override
+    public String toString() {
+        return "Square{" +
+                "side=" + side +
+                ", shapeName='" + shapeName + '\'' +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         int result;
         long temp;

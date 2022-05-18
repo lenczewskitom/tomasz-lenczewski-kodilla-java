@@ -24,6 +24,15 @@ public class Triangle implements Shape{
     }
 
     @Override
+    public String toString() {
+        return "Triangle{" +
+                "height=" + height +
+                ", base=" + base +
+                ", shapeName='" + shapeName + '\'' +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         int result;
         long temp;

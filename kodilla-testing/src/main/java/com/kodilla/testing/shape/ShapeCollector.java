@@ -5,25 +5,33 @@ import java.util.List;
 
 public class ShapeCollector {
 
-    private List<Shape> shapes = new ArrayList<>();
+    private ArrayList<Shape> shapes = new ArrayList<>();
 
     public void addFigure(Shape shape) {
-        //add figure
+        shapes.add(shape);
     }
 
     public boolean removeFigure(Shape shape) {
-        //remove figure
-        return false;
+        boolean result =  false;
+        if (shapes.contains(shape)) {
+            shapes.remove(shape);
+            result = true;
+        }
+        return result;
     }
 
     public Shape getFigure(int n) {
-        //get figure
-        return null;
+        if (n > shapes.size()-1 || n < 0) {
+            return null;
+        } else {
+            System.out.println("Figure at "+n+" index in shapes collection is: ");
+            return shapes.get(n);
+        }
     }
 
     public ArrayList<Shape> showFigures() {
-        //show figure
-        return null;
+        System.out.println("Collection shapes contains: ");
+        return shapes;
     }
 
 }
