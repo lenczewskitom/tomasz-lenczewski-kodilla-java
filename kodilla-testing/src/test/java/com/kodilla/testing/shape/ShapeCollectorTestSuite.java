@@ -62,7 +62,7 @@ public class ShapeCollectorTestSuite {
             shapeCollector.addFigure(circle);
             //When
             Shape retrievedFigure;
-            retrievedFigure = shapeCollector.getFigure(5);
+            retrievedFigure = shapeCollector.getFigure(0);
             //Then
             Assertions.assertEquals(circle,retrievedFigure);
         }
@@ -74,11 +74,10 @@ public class ShapeCollectorTestSuite {
             Shape circle = new Circle(3.0);
             shapeCollector.addFigure(circle);
             //When
-            Exception exception = Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
-                shapeCollector.getFigure(-1);
-            });
+            Shape retrievedFigure;
+            retrievedFigure = shapeCollector.getFigure(-1);
             //Then
-            Assertions.assertEquals("Index -1 out of bounds for length 1", exception.getMessage());
+            Assertions.assertEquals(null,retrievedFigure);
         }
 
         @Test
@@ -88,11 +87,10 @@ public class ShapeCollectorTestSuite {
             Shape circle = new Circle(3.0);
             shapeCollector.addFigure(circle);
             //When
-            Exception exception = Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
-                shapeCollector.getFigure(3);
-            });
+            Shape retrievedFigure;
+            retrievedFigure = shapeCollector.getFigure(3);
             //Then
-            Assertions.assertEquals("Index 3 out of bounds for length 1", exception.getMessage());
+            Assertions.assertEquals(null,retrievedFigure);
         }
 
         @Test
