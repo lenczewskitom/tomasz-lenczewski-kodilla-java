@@ -78,7 +78,7 @@ public class ShapeCollectorTestSuite {
             Shape retrievedFigure;
             retrievedFigure = shapeCollector.getFigure(-1);
             //Then
-            Assertions.assertEquals(null,retrievedFigure);
+            Assertions.assertNull(retrievedFigure);
         }
 
         @Test
@@ -91,7 +91,7 @@ public class ShapeCollectorTestSuite {
             Shape retrievedFigure;
             retrievedFigure = shapeCollector.getFigure(3);
             //Then
-            Assertions.assertEquals(null,retrievedFigure);
+            Assertions.assertNull(retrievedFigure);
         }
 
         @Test
