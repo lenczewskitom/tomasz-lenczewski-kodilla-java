@@ -1,6 +1,6 @@
 package com.kodilla.testing;
 
-
+import com.kodilla.testing.forum.statistics.*;
 import java.util.*;
 
 public class TestingMain {
