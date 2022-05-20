@@ -46,11 +46,14 @@ public class CalculateTestSuite {
         //Given
         Calculate calculate = new Calculate();
         when(statisticsMock.postsCount()).thenReturn(0);
+        when(statisticsMock.commentsCount()).thenReturn(0);
         when(statisticsMock.usersNames()).thenReturn(generateListOfNUsers(10));
         //When
         calculate.calculateAdvStatistics(statisticsMock);
         //Then
         assertEquals(0, calculate.getAvgPostsOnUser());
+        assertEquals(0,calculate.getAvgCommentsOnUser());
+        assertEquals(0,calculate.getAvgCommentsOnPost());
     }
 
     @Test
@@ -58,11 +61,14 @@ public class CalculateTestSuite {
         //Given
         Calculate calculate = new Calculate();
         when(statisticsMock.postsCount()).thenReturn(1000);
+        when(statisticsMock.commentsCount()).thenReturn(100);
         when(statisticsMock.usersNames()).thenReturn(generateListOfNUsers(10));
         //When
         calculate.calculateAdvStatistics(statisticsMock);
         //Then
         assertEquals(100, calculate.getAvgPostsOnUser());
+        assertEquals(10,calculate.getAvgCommentsOnUser());
+        assertEquals(0.1,calculate.getAvgCommentsOnPost());
     }
 
     @Test
@@ -70,11 +76,14 @@ public class CalculateTestSuite {
         //Given
         Calculate calculate = new Calculate();
         when(statisticsMock.postsCount()).thenReturn(0);
+        when(statisticsMock.commentsCount()).thenReturn(0);
         when(statisticsMock.usersNames()).thenReturn(generateListOfNUsers(0));
         //When
         calculate.calculateAdvStatistics(statisticsMock);
         //Then
         assertEquals(0, calculate.getAvgPostsOnUser());
+        assertEquals(0,calculate.getAvgCommentsOnUser());
+        assertEquals(0,calculate.getAvgCommentsOnPost());
     }
 
     @Test
@@ -82,11 +91,14 @@ public class CalculateTestSuite {
         //Given
         Calculate calculate = new Calculate();
         when(statisticsMock.postsCount()).thenReturn(10);
+        when(statisticsMock.commentsCount()).thenReturn(100);
         when(statisticsMock.usersNames()).thenReturn(generateListOfNUsers(100));
         //When
         calculate.calculateAdvStatistics(statisticsMock);
         //Then
         assertEquals(0.1, calculate.getAvgPostsOnUser());
+        assertEquals(1,calculate.getAvgCommentsOnUser());
+        assertEquals(10,calculate.getAvgCommentsOnPost());
     }
 
     @Test
@@ -94,11 +106,14 @@ public class CalculateTestSuite {
         //Given
         Calculate calculate = new Calculate();
         when(statisticsMock.commentsCount()).thenReturn(0);
+        when(statisticsMock.postsCount()).thenReturn(500);
         when(statisticsMock.usersNames()).thenReturn(generateListOfNUsers(100));
         //When
         calculate.calculateAdvStatistics(statisticsMock);
         //Then
-        assertEquals(0, calculate.getAvgCommentsOnUser());
+        assertEquals(0, calculate.getAvgCommentsOnPost());
+        assertEquals(5, calculate.getAvgPostsOnUser());
+        assertEquals(0,calculate.getAvgCommentsOnUser());
     }
 
     @Test
@@ -106,11 +121,14 @@ public class CalculateTestSuite {
         //Given
         Calculate calculate = new Calculate();
         when(statisticsMock.commentsCount()).thenReturn(0);
+        when(statisticsMock.postsCount()).thenReturn(0);
         when(statisticsMock.usersNames()).thenReturn(generateListOfNUsers(0));
         //When
         calculate.calculateAdvStatistics(statisticsMock);
         //Then
-        assertEquals(0, calculate.getAvgCommentsOnUser());
+        assertEquals(0, calculate.getAvgCommentsOnPost());
+        assertEquals(0, calculate.getAvgPostsOnUser());
+        assertEquals(0,calculate.getAvgCommentsOnUser());
     }
 
     @Test
@@ -118,11 +136,14 @@ public class CalculateTestSuite {
         //Given
         Calculate calculate = new Calculate();
         when(statisticsMock.commentsCount()).thenReturn(1000);
+        when(statisticsMock.postsCount()).thenReturn(500);
         when(statisticsMock.usersNames()).thenReturn(generateListOfNUsers(100));
         //When
         calculate.calculateAdvStatistics(statisticsMock);
         //Then
-        assertEquals(10, calculate.getAvgCommentsOnUser());
+        assertEquals(2, calculate.getAvgCommentsOnPost());
+        assertEquals(5, calculate.getAvgPostsOnUser());
+        assertEquals(10,calculate.getAvgCommentsOnUser());
     }
 
     @Test
@@ -131,10 +152,13 @@ public class CalculateTestSuite {
         Calculate calculate = new Calculate();
         when(statisticsMock.commentsCount()).thenReturn(0);
         when(statisticsMock.postsCount()).thenReturn(0);
+        when(statisticsMock.usersNames()).thenReturn(generateListOfNUsers(100));
         //When
         calculate.calculateAdvStatistics(statisticsMock);
         //Then
         assertEquals(0, calculate.getAvgCommentsOnPost());
+        assertEquals(0, calculate.getAvgPostsOnUser());
+        assertEquals(0,calculate.getAvgCommentsOnUser());
     }
 
     @Test
@@ -143,10 +167,13 @@ public class CalculateTestSuite {
         Calculate calculate = new Calculate();
         when(statisticsMock.commentsCount()).thenReturn(20000);
         when(statisticsMock.postsCount()).thenReturn(1000);
+        when(statisticsMock.usersNames()).thenReturn(generateListOfNUsers(100));
         //When
         calculate.calculateAdvStatistics(statisticsMock);
         //Then
         assertEquals(20, calculate.getAvgCommentsOnPost());
+        assertEquals(10, calculate.getAvgPostsOnUser());
+        assertEquals(200,calculate.getAvgCommentsOnUser());
     }
 
     @Test
@@ -155,10 +182,13 @@ public class CalculateTestSuite {
         Calculate calculate = new Calculate();
         when(statisticsMock.commentsCount()).thenReturn(0);
         when(statisticsMock.postsCount()).thenReturn(100);
+        when(statisticsMock.usersNames()).thenReturn(generateListOfNUsers(100));
         //When
         calculate.calculateAdvStatistics(statisticsMock);
         //Then
         assertEquals(0, calculate.getAvgCommentsOnPost());
+        assertEquals(1, calculate.getAvgPostsOnUser());
+        assertEquals(0,calculate.getAvgCommentsOnUser());
     }
 
     @Test
@@ -167,10 +197,13 @@ public class CalculateTestSuite {
         Calculate calculate = new Calculate();
         when(statisticsMock.commentsCount()).thenReturn(1000);
         when(statisticsMock.postsCount()).thenReturn(100);
+        when(statisticsMock.usersNames()).thenReturn(generateListOfNUsers(100));
         //When
         calculate.calculateAdvStatistics(statisticsMock);
         //Then
         assertEquals(10, calculate.getAvgCommentsOnPost());
+        assertEquals(1, calculate.getAvgPostsOnUser());
+        assertEquals(10,calculate.getAvgCommentsOnUser());
     }
 
     @Test
@@ -179,9 +212,12 @@ public class CalculateTestSuite {
         Calculate calculate = new Calculate();
         when(statisticsMock.commentsCount()).thenReturn(100);
         when(statisticsMock.postsCount()).thenReturn(200);
+        when(statisticsMock.usersNames()).thenReturn(generateListOfNUsers(100));
         //When
         calculate.calculateAdvStatistics(statisticsMock);
         //Then
         assertEquals(0.5, calculate.getAvgCommentsOnPost());
+        assertEquals(2, calculate.getAvgPostsOnUser());
+        assertEquals(1,calculate.getAvgCommentsOnUser());
     }
 }
