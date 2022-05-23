@@ -1,17 +1,16 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.lambda.Executor;
-import com.kodilla.stream.lambda.MathExpression;
-import com.kodilla.stream.lambda.Processor;
-import com.kodilla.stream.lambda.ExpressionExecutor;
-import com.kodilla.stream.reference.FunctionalCalculator;
+import com.kodilla.stream.beautifier.*;
 
 public class StreamMain {
 
     public static void main(String[] args) {
-    ExpressionExecutor expressionExecutor = new ExpressionExecutor();
-    expressionExecutor.executeExpression(10, 5, (a, b) -> a+b);
+        PoemBeautifier poemBeautifier = new PoemBeautifier();
 
-    expressionExecutor.executeExpression(3, 4, FunctionalCalculator::addAToB);
+        poemBeautifier.beautify("Sky is blue", (str) -> str.toUpperCase());
+        poemBeautifier.beautify("Sky is blue", (str) -> "ABC" + str + "ABC");
+        poemBeautifier.beautify("Sky is blue", (str) -> str.concat(str));
+        poemBeautifier.beautify("Sky is blue", (str) -> str.replaceAll("S", "T"));
+
     }
 }
