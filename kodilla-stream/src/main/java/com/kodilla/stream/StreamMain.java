@@ -1,16 +1,23 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifier.*;
+
+import com.kodilla.stream.book.Book;
+import com.kodilla.stream.book.BookDirectory;
+
+import java.util.stream.Collectors;
+
 
 public class StreamMain {
 
     public static void main(String[] args) {
-        PoemBeautifier poemBeautifier = new PoemBeautifier();
+        BookDirectory bookDirectory = new BookDirectory();
 
-        poemBeautifier.beautify("Sky is blue", (str) -> str.toUpperCase());
-        poemBeautifier.beautify("Sky is blue", (str) -> "ABC" + str + "ABC");
-        poemBeautifier.beautify("Sky is blue", (str) -> str.concat(str));
-        poemBeautifier.beautify("Sky is blue", (str) -> str.replaceAll("S", "T"));
+        String resultStringOfBooks = bookDirectory.getList().stream()
+                .filter(book -> book.getYearOfPublication() > 2005)
+                .map(Book::toString)
+                .collect(Collectors.joining(",\n", "<<", ">>"));
+
+        System.out.println(resultStringOfBooks);
 
     }
 }
