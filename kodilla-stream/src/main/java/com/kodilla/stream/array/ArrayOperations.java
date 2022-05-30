@@ -7,11 +7,14 @@ public interface ArrayOperations {
         IntStream.range(0, numbers.length)
                 .forEach(n -> System.out.println(numbers[n]));
 
+        double averageOfNumbers;
 
-        double averageOfNumbers = IntStream.range(0, numbers.length)
-                .mapToDouble(n -> numbers[n])
-                .average()
-                .getAsDouble();
+        if (numbers.length != 0) {
+            averageOfNumbers = IntStream.range(0, numbers.length)
+                    .mapToDouble(n -> numbers[n])
+                    .average()
+                    .getAsDouble();
+        } else averageOfNumbers = 0;
 
         return averageOfNumbers;
     }
