@@ -1,7 +1,9 @@
 package com.kodilla.stream.portfolio;
 
 import org.junit.jupiter.api.Test;
+
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -139,5 +141,46 @@ class BoardTestSuite {
 
         //Then
         assertEquals(2, longTasks);
+    }
+    @Test
+    void testAddTaskListAverageWorkingOnTask(){
+        //Given
+        Board project = prepareTestData();
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+        double averageTime = project.getTaskLists().stream()
+                .filter(taskList -> taskList.getName().equals("In progress"))
+                .flatMap(taskList -> taskList.getTasks().stream())
+                .map(Task::getCreated)
+                .mapToDouble(n -> ChronoUnit.DAYS.between(n, LocalDate.now()))
+                .average()
+                .getAsDouble();
+        //Then
+        assertEquals(10, averageTime);
+    }
+
+    @Test
+    void testAddTaskListAverageWorkingOnTaskTwoStreams(){
+        //Given
+        Board project = prepareTestData();
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+        long numberOfTasks = project.getTaskLists().stream()
+                .filter(taskList -> taskList.getName().equals("In progress"))
+                .flatMap(taskList -> taskList.getTasks().stream())
+                .count();
+
+        long numberOfDays = project.getTaskLists().stream()
+                .filter(taskList -> taskList.getName().equals("In progress"))
+                .flatMap(taskList -> taskList.getTasks().stream())
+                .map(Task::getCreated)
+                .mapToLong(n -> ChronoUnit.DAYS.between(n, LocalDate.now()))
+                .sum();
+
+        double averageTime = (double) numberOfDays / numberOfTasks;
+        //Then
+        assertEquals(10, averageTime);
     }
 }
