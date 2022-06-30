@@ -133,7 +133,7 @@ class BoardTestSuite {
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
         long longTasks = project.getTaskLists().stream()
-                .filter(taskList -> taskList.getName().equals("In progress"))
+                .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(Task::getCreated)
                 .filter(d -> d.compareTo(LocalDate.now().minusDays(10)) <= 0)

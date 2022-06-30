@@ -4,7 +4,9 @@ import com.kodilla.stream.forumuser.Forum;
 import com.kodilla.stream.forumuser.ForumUser;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class StreamMain {
@@ -24,5 +26,9 @@ public class StreamMain {
                 .map(entry -> entry.getKey() + ": " + entry.getValue())
                 .forEach(System.out::println);
 
+
+
     }
-}
+    }
+
+

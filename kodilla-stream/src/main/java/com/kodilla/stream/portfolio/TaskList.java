@@ -40,6 +40,6 @@ public class TaskList {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TaskList taskList = (TaskList) o;
-        return tasks.equals(taskList.tasks);
+        return name.equals(taskList.name);
     }
 }
