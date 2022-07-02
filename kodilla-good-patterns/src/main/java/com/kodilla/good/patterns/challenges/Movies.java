@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns;
+package com.kodilla.good.patterns.challenges;
 
 
 import com.kodilla.good.patterns.challenges.MovieStore;
