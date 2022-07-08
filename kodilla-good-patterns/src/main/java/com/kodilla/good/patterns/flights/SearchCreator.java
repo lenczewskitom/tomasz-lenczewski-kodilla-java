@@ -6,7 +6,6 @@ public class SearchCreator {
     private String flightType;
     private String arrivalAirport;
     private String departureAirport;
-    private String throughAirport;
     Scanner scanner = new Scanner(System.in);
 
     public Search search() {
@@ -22,12 +21,11 @@ public class SearchCreator {
                 arrivalAirport = scanner.nextLine();
             }
             case "Through" -> {
-                System.out.println("Enter departure, through and arrival airport:");
+                System.out.println("Enter departure and arrival airport:");
                 departureAirport = scanner.nextLine();
-                throughAirport = scanner.nextLine();
                 arrivalAirport = scanner.nextLine();
             }
         }
-        return new Search(flightType, departureAirport, arrivalAirport, throughAirport);
+        return new Search(flightType, departureAirport, arrivalAirport);
     }
 }

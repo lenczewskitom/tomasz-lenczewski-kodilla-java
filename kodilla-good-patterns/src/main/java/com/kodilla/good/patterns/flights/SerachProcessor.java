@@ -6,7 +6,7 @@ public class SerachProcessor {
         switch (search.getFlightType()) {
             case "From" -> flightSearch.searchByDepartureAirport(search.getDepartureAirport());
             case "To" -> flightSearch.searchByArrival(search.getArrivalAirport());
-            case "Through" -> flightSearch.searchFlightThrough(search.getDepartureAirport(), search.getThroughAirport(), search.getArrivalAirport());
+            case "Through" -> flightSearch.searchFlightThrough(search.getDepartureAirport(), search.getArrivalAirport());
         }
     }
 }

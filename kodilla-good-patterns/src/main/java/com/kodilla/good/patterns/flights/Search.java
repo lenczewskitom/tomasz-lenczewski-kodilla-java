@@ -4,13 +4,11 @@ public class Search {
     private String flightType;
     private String arrivalAirport;
     private String departureAirport;
-    private String throughAirport;
 
-    public Search(String flightType, String departureAirport, String arrivalAirport, String throughAirport) {
+    public Search(String flightType, String departureAirport, String arrivalAirport) {
         this.flightType = flightType;
         this.arrivalAirport = arrivalAirport;
         this.departureAirport = departureAirport;
-        this.throughAirport = throughAirport;
     }
 
     public String getFlightType() {
@@ -23,9 +21,5 @@ public class Search {
 
     public String getDepartureAirport() {
         return departureAirport;
-    }
-
-    public String getThroughAirport() {
-        return throughAirport;
     }
 }
