@@ -5,9 +5,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import javax.annotation.security.PermitAll;
 import java.util.List;
 
 public interface EmployeeDao extends CrudRepository<Employee, Integer> {
     @Query
     List<Employee> retrieveEmployeeByName(@Param("LASTNAME") String lastname);
+
+    @Query
+    List<Employee> retrieveEmployeeByPartName(@Param("NAME") String lastname);
 }
